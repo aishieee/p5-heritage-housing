@@ -142,7 +142,7 @@ The project includes a Streamlit dashboard that allows the client to:
 
 This ensures the project outcome is intuitive, transparent, and actionable for the client.
 
-## CRISP-DM
+## CRISP-DM
 
 The above business requirements map directly onto the CRISP-DM workflow:
 
@@ -158,7 +158,35 @@ The above business requirements map directly onto the CRISP-DM workflow:
 
 ## ML Business Case
 
-* In the previous bullet, you potentially visualised an ML task to answer a business requirement. You should frame the business case using the method we covered in the course.
+The objective of this project is to build a supervised machine learning system that predicts house sale prices in Ames, Iowa. The client will use this system to determine the combined value of 4 inherited properties and to evaluate any future properties.
+
+#### Type of ML Task:
+
+This is a supervised regression task because the **target variable `SalePrice`** is continuous and the model learns patterns from labelled hitorical data. 
+
+#### Variables
+
+**Dependent variable (Target):** 
+
+- The variable we aim to predict is `SalePrice` of a house in USD. 
+- This is the value the model outputs 
+
+**Independent Variables (Features):**
+
+- These are the inputs the model uses to learn and make predictions which are based on EDA findings and correlation analysis, the following features will be used:
+   * Size-related features: `GrLivArea`, `1stFlrSF`, `2ndFlrSF`, `TotalBsmtSF` and `LotArea`.
+   * Quality and condition features: `OverallQual` and `OverallCond`
+   * Garage features: `GarageArea` and `GarageYrBlt`
+   * Age features: `YearBuilt` and `YearRemodAdd`
+   * Exterior/amenity features: `MasVnrArea`, `WoodDeckSF`, `OpenPorchSF` and `EnclosedPorch`.
+   * Basement features: `BsmtFinSF1` and `BsmtUnfSF`
+   * Other numerical features included after cleaning and feature selection.
+
+These features provide the information the model needs to understand how house characteristics influence sale price.
+
+**Output**
+
+A single numerical value = the predicted house sale price 
 
 ## Dashboard Design
 
