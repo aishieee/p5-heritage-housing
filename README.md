@@ -85,6 +85,29 @@ The following hypothese were developed after inspecting and exploring the Ames H
 
 * **Smaller features have limited influence** - Variables such as `BedroomAbvGr`, `EnclosedPorch` and `OverallCond` were expected to have weak correlations with price.
 
+### How the Hypotheses will be validated:
+
+Each hypothesis will be validated using a combination of exploratory data analysis (EDA), visualisations, and machine learning (ML) modelling.
+
+1. **Correlation Analysis**
+Pearson correlation coefficients and the correlation heatmap are used to test if key features (e.g., `GrLivArea`, `OverallQual`, `TotalBsmtSF`, `GarageArea`) show strong relationships with `SalePrice`.
+This directly validates hypotheses about size, quality, and age.
+
+2. **Visual Explorations**
+Scatterplots, boxplots, and distribution plots will be used to visually confirm the strength of the relationships between important predictors and the sale price.
+This helps validate whether trends expected in the hypotheses appear in the data.
+
+3. **Feature Importance from the ML Model**
+Once the regression model is trained, its feature importance values (e.g., coefficients for Linear Regression or feature importances from Random Forest) will indicate which features the model relies on most.
+This validates whether the predicted “top features” are indeed useful in predicting sale price.
+
+4. **Model Performance (R² Score)**
+A model achieving R² ≥ 0.75 on both training and test data suggests that the chosen features and hypotheses align with real market behaviour.
+If removing weak features improves the score, the hypotheses about feature relevance are further validated.
+
+All these steps ensures conclusions are backed by both EDA insights and predictive modelling performance.
+
+
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
 
 * List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
