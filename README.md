@@ -199,6 +199,20 @@ Building this regression model benefits the client by enabling:
 
 This ensures the client has a reliable, data-driven tool rather than relying on guesswork.
 
+## Model Requirements
+
+### The client defined success as:
+    - R² score ≥ 0.75 on both the training and test sets
+    - Accurate predictions for all 4 inherited houses
+    - Confidence that the model generalises to unseen data
+    - A deployed dashboard the client can use independently
+
+### The model is considered unsuccessful if:
+    - R² < 0.75
+    - Predictions are unstable
+    - The model is wrong by more than ~30% over a longer period
+    - Insights do not match real market trends
+
 ## Dashboard Design
 
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items that your dashboard library supports.
