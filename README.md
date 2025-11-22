@@ -1,12 +1,4 @@
-# ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-## Template Instructions
-
-Welcome,
-
-This is the Code Institute student template for the Heritage Housing project option in Predictive Analytics. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions. Click the `Use this template` button above to get started.
-
-You can safely delete the Template Instructions section of this README.md file,  and modify the remaining paragraphs for your own project. Please do read the Template Instructions at least once, though! It contains some important information about the IDE and the extensions we use.
 
 ## How to use this repo
 
@@ -79,9 +71,19 @@ Although your friend has an excellent understanding of property prices in her ow
 * 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
 * 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa.
 
-## Hypothesis and how to validate?
+## Hypothesis
 
-* List here your project hypothesis(es) and how you envision validating it (them).
+The following hypothese were developed after inspecting and exploring the Ames Housing dataset (EDA) but before cleaning or modelling: 
+
+* **Larger homes sell for higher prices.** - Homes with greater living area (`GrLivArea`, `1stFlrSF`, `TotalBsmtSF`) and larger overall footprint should achieve higher sale prices
+
+* **Higher construction quality increases sale price.** - `OverallQual` (materials and finish quality) is expected to be one of the strongest predictors of price.
+
+* **Homes with larger garages sell for higher prices.** - Homes with bigger `GarageArea` and `GarageCars` are expected to sell for more.
+
+* **Newer or recently renovated homes are worth more.** - `YearBuilt` and `YearRemodAdd` should be positively associated with price as newer homes often require less maintenance.
+
+* **Smaller features have limited influence** - Variables such as `BedroomAbvGr`, `EnclosedPorch` and `OverallCond` were expected to have weak correlations with price.
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
 
