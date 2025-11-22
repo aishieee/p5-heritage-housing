@@ -127,10 +127,20 @@ To answer this requirement, the project implements a ML regression model:
     - Feature selection is guided by the EDA results from requirement 1.
     - Regression modelling (Linear Regression and Random Forest) is used to map feature relationships to `SalePrice`.
     - Model evaluation ensures performance meets the agreed metric of **R² ≥ 0.75** on both train and test sets.
-    - Model inference allows prediction of `SalePrice` for the inherited houses.
+    - Model inference allows prediction of `SalePrice` for the inherited houses and other inputs.
 
 This satisfies the client’s second requirement to accurately predict house prices based on their attributes.
 
+**Business Requirement 3** - Provide insights and predictions through an interactive dashboard
+
+The project includes a Streamlit dashboard that allows the client to:
+    - View EDA visualisations 
+    - Explore relationships between features and `SalePrice`
+    - Enter custom house features and generate predictions 
+    - View predicted sale prices for all four inherited houses
+    - Navigate results in a user-friendly interface
+    
+This ensures the project outcome is intuitive, transparent, and actionable for the client.
 
 ## ML Business Case
 
