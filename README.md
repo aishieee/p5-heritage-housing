@@ -188,6 +188,17 @@ These features provide the information the model needs to understand how house c
 
 A single numerical value = the predicted house sale price 
 
+## Business Value 
+
+Building this regression model benefits the client by enabling:
+
+- Accurate sale price estimates for the four inherited houses
+- Evidence-based Understanding of which features influence property value the most
+- Better decision-making when selling or investing in properties
+- A tool to assess the value of any additional property through the dashboard
+
+This ensures the client has a reliable, data-driven tool rather than relying on guesswork.
+
 ## Dashboard Design
 
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items that your dashboard library supports.
