@@ -110,7 +110,16 @@ All these steps ensures conclusions are backed by both EDA insights and predicti
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
 
-* List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
+**Business Requirement 1** - Understand how house attributes correlate with `SalePrice`
+
+To answer this requirement, the project uses conventional EDA techniques:
+    - Correlation analysis to identify the strongest relationships between features and `SalePrice`.
+    - Heatmaps to provide a visual overview of feature interactions.
+    - Scatterplots & boxplots to show clear trends and validate assumptions.
+    - Summary statistics & distributions to detect skewness, outliers, and variable behavior.
+
+These visualisations help the client understand which attributes influence a property's value the most and satisfies their first requirement by showing the most relevant variables correlated to `SalePrice`.
+
 
 ## ML Business Case
 
