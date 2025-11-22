@@ -139,8 +139,22 @@ The project includes a Streamlit dashboard that allows the client to:
     - Enter custom house features and generate predictions 
     - View predicted sale prices for all four inherited houses
     - Navigate results in a user-friendly interface
-    
+
 This ensures the project outcome is intuitive, transparent, and actionable for the client.
+
+## CRISP-DM
+
+The above business requirements map directly onto the CRISP-DM workflow:
+
+| **CRISP-DM Phase**        | **How It Maps to the Project**                                   |
+|---------------------------|------------------------------------------------------------------|
+| Business Understanding    |     Identify client   goals: correlations + predictions          |
+|     Data Understanding    |     EDA, correlation   analysis, visualisations                  |
+|     Data Preparation      |     Cleaning, handling   missing values, encoding                |
+|     Modelling             |     Regression model   training + optimisation                   |
+|     Evaluation            |     R² ≥ 0.75   performance requirement                          |
+|     Deployment            |     Streamlit   dashboard delivering insights and predictions    |
+
 
 ## ML Business Case
 
