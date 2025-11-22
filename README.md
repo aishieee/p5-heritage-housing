@@ -120,6 +120,17 @@ To answer this requirement, the project uses conventional EDA techniques:
 
 These visualisations help the client understand which attributes influence a property's value the most and satisfies their first requirement by showing the most relevant variables correlated to `SalePrice`.
 
+**Business Requirement 2** - Predict the sale prices of the 4 inherited houses (and any other house in Ames)
+
+To answer this requirement, the project implements a ML regression model:
+    - Data cleaning and preprocessing ensure the model receives complete, reliable inputs.
+    - Feature selection is guided by the EDA results from requirement 1.
+    - Regression modelling (Linear Regression and Random Forest) is used to map feature relationships to `SalePrice`.
+    - Model evaluation ensures performance meets the agreed metric of **R² ≥ 0.75** on both train and test sets.
+    - Model inference allows prediction of `SalePrice` for the inherited houses.
+
+This satisfies the client’s second requirement to accurately predict house prices based on their attributes.
+
 
 ## ML Business Case
 
