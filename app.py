@@ -207,8 +207,8 @@ def show_inherited_prediction_page():
         st.info("Adjust the inputs in the sidebar and click 'Predict Price' to see an estimate.")
 
 def show_summary_page():
-    st.title("Project Summary")
-    st.write("This page will describe the project, dataset, and client requirements.")
+    st.title("🏠 House Price Predictor")
+    st.write("Project Summary")
 
 def show_feature_insights_page():
     st.title("Feature Insights")
