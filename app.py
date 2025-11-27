@@ -51,6 +51,27 @@ def show_inherited_prediction_page():
     st.title("Inherited Houses & Price Prediction")
     st.write("This page will show the 4 inherited houses and allow the user to predict prices.")
 
+    # --------------- Sidebar inputs ---------------------
+    st.sidebar.header("🔧 House Feature Inputs")
+
+    # Size features
+    first_flr = st.sidebar.number_input(
+        "1st Floor Area (sq ft)", min_value=200, max_value=3000, value=900, step=10
+    )
+    second_flr = st.sidebar.number_input(
+        "2nd Floor Area (sq ft)", min_value=0, max_value=2500, value=0, step=10
+    )
+    lot_area = st.sidebar.number_input(
+        "Lot Area (sq ft)", min_value=1000, max_value=40000, value=10000, step=100
+    )
+    total_bsmt = st.sidebar.number_input(
+        "Total Basement Area (sq ft)", min_value=0, max_value=3000, value=800, step=10
+    )
+    garage_area = st.sidebar.number_input(
+        "Garage Area (sq ft)", min_value=0, max_value=1200, value=400, step=10
+    )
+
+
 def show_summary_page():
     st.title("Project Summary")
     st.write("This page will describe the project, dataset, and client requirements.")
