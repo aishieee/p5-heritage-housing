@@ -208,7 +208,7 @@ def show_inherited_prediction_page():
 
 def show_summary_page():
     st.title("🏠 House Price Predictor")
-    st.write("Project Summary")
+    st.subheader("Project Summary")
 
     # --- Project Dataset ---
     st.subheader("📂 Project Dataset")
