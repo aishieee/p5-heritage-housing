@@ -112,7 +112,7 @@ def transform_inputs(raw_inputs: dict) -> pd.DataFrame:
     # Ensure columns are ordered correctly
     df = df[MODEL_FEATURES]
 
-return df
+    return df
 
 
 
@@ -171,7 +171,6 @@ def show_inherited_prediction_page():
     )
 
     # Show the user inputs as a dictionary (for debugging before prediction)
-    st.subheader("📦 Current Inputs (Preview)")
     raw_inputs = {
         "1stFlrSF": first_flr,
         "2ndFlrSF": second_flr,
@@ -185,7 +184,15 @@ def show_inherited_prediction_page():
         "BsmtFinType1": BSMT_FIN_MAP[bsmt_fin_type1],
         "GarageFinish": GARAGE_FIN_MAP[garage_finish],
     }
+
+    st.subheader("📦 Current Inputs (Preview)")
     st.write(raw_inputs)
+
+    # Transform into model-ready features
+    transformed_df = transform_inputs(raw_inputs)
+
+    st.subheader("📐 Transformed Features (Model-Ready)")
+    st.write(transformed_df)
 
 def show_summary_page():
     st.title("Project Summary")
