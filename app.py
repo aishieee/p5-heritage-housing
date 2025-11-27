@@ -1,6 +1,37 @@
 import streamlit as st
 import joblib
 
+# Label - code mappings
+KITCHEN_MAP = {
+    "Excellent": "Ex",
+    "Good": "Gd",
+    "Typical/Average": "TA",
+    "Fair": "Fa",
+    "Poor": "Po",
+}
+
+EXPOSURE_MAP = {
+    "No Exposure": "No",
+    "Minimum Exposure": "Mn",
+    "Average Exposure": "Av",
+    "Good Exposure": "Gd",
+}
+
+BSMT_FIN_MAP = {
+    "Unfinished": "Unf",
+    "Low Quality": "LwQ",
+    "Rec Room": "Rec",
+    "Below Average Living Quarters": "BLQ",
+    "Average Living Quarters": "ALQ",
+    "Good Living Quarters": "GLQ",
+}
+
+GARAGE_FIN_MAP = {
+    "Unfinished": "Unf",
+    "Rough Finished": "RFn",
+    "Finished": "Fin",
+}
+
 st.set_page_config(
     page_title="Heritage Housing Price Prediction",
     layout="wide"
