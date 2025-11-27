@@ -226,11 +226,20 @@ def show_summary_page():
     2. **Predicted sale prices for four inherited houses.**  
     3. **An interactive dashboard** to explore data, insights, models, and predictions.
     """)
-    
+
     # --- Open README ---
     st.subheader("📘 Check out Project README")
     st.markdown("Click below to open the full README file in GitHub:")
     st.link_button("Open README", "https://github.com/aishieee/p5-heritage-housing?tab=readme-ov-file#readme")
+
+    # --- Dataset Guidelines ---
+    st.subheader("📑 Dataset Guidelines")
+    st.markdown("""
+    - Numerical features include areas (sq ft), counts, and quality ratings.  
+    - Categorical features (e.g., kitchen quality, garage finish) use ordinal encodings.  
+    - Skewed features (LotArea, GrLivArea, TotalBsmtSF) were log-transformed.  
+    - Missing values were handled using domain-aware strategies.  
+    """)
 
 def show_feature_insights_page():
     st.title("Feature Insights")
