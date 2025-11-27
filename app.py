@@ -226,6 +226,11 @@ def show_summary_page():
     2. **Predicted sale prices for four inherited houses.**  
     3. **An interactive dashboard** to explore data, insights, models, and predictions.
     """)
+    
+    # --- Open README ---
+    st.subheader("📘 Check out Project README")
+    st.markdown("Click below to open the full README file in GitHub:")
+    st.link_button("Open README", "https://github.com/aishieee/p5-heritage-housing?tab=readme-ov-file#readme")
 
 def show_feature_insights_page():
     st.title("Feature Insights")
