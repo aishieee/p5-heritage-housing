@@ -48,3 +48,18 @@ def main():
             "Model Performance",
         ],
     )
+
+    # Show the selected page
+    if page == "Project Summary":
+        show_summary_page()
+    elif page == "Feature Insights":
+        show_feature_insights_page()
+    elif page == "Inherited Houses & Prediction":
+        show_inherited_prediction_page()
+    elif page == "Hypotheses":
+        show_hypotheses_page()
+    elif page == "Model Performance":
+        show_model_performance_page()
+        
+if __name__ == "__main__":
+    main()
