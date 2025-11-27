@@ -64,8 +64,56 @@ MODEL_FEATURES = [
 ]
 
 def transform_inputs(raw_inputs: dict) -> pd.DataFrame:
+    """
+    Takes the raw sidebar inputs and returns
+    a DataFrame with the 10 engineered features
+    used by the Random Forest model.
+    """
 
-return pd.DataFrame()
+    # Compute total above-ground living area
+    gr_liv_area = raw_inputs["1stFlrSF"] + raw_inputs["2ndFlrSF"]
+
+    # Log transforms
+    grliv_log = np.log1p(gr_liv_area)
+    total_bsmt_log = np.log1p(raw_inputs["TotalBsmtSF"])
+    lotarea_log = np.log1p(raw_inputs["LotArea"])
+
+    # Categorical encodings 
+    kitchen_map = {"Ex": 5, "Gd": 4, "TA": 3, "Fa": 2, "Po": 1}
+    bsmt_exposure_map = {"Gd": 4, "Av": 3, "Mn": 2, "No": 1}
+    bsmt_fin_map = {
+        "GLQ": 6, "ALQ": 5, "BLQ": 4,
+        "Rec": 3, "LwQ": 2, "Unf": 1
+    }
+    garage_finish_map = {"Fin": 3, "RFn": 2, "Unf": 1}
+
+    # Apply numeric encodings
+    kitchen_enc = kitchen_map[raw_inputs["KitchenQual"]]
+    bsmt_exp_enc = bsmt_exposure_map[raw_inputs["BsmtExposure"]]
+    bsmt_fin_enc = bsmt_fin_map[raw_inputs["BsmtFinType1"]]
+    garage_fin_enc = garage_finish_map[raw_inputs["GarageFinish"]]
+
+    # Build final DataFrame (matches model training order)
+    df = pd.DataFrame(
+        {
+            "GarageArea": [raw_inputs["GarageArea"]],
+            "OverallQual": [raw_inputs["OverallQual"]],
+            "OverallCond": [raw_inputs["OverallCond"]],
+            "KitchenQual": [kitchen_enc],
+            "BsmtExposure": [bsmt_exp_enc],
+            "BsmtFinType1": [bsmt_fin_enc],
+            "GarageFinish": [garage_fin_enc],
+            "GrLivArea_log": [grliv_log],
+            "TotalBsmtSF_log": [total_bsmt_log],
+            "LotArea_log": [lotarea_log],
+        }
+    )
+
+    # Ensure columns are ordered correctly
+    df = df[MODEL_FEATURES]
+
+return df
+
 
 
 # ---------------------------------------
