@@ -63,6 +63,11 @@ MODEL_FEATURES = [
     "LotArea_log",
 ]
 
+def transform_inputs(raw_inputs: dict) -> pd.DataFrame:
+
+return pd.DataFrame()
+
+
 # ---------------------------------------
 # Placeholder for sidebar page functions 
 # ---------------------------------------
