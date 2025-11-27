@@ -35,3 +35,16 @@ def show_hypotheses_page():
 def show_model_performance_page():
     st.title("Model Performance")
     st.write("This page will show the model metrics and pipeline details.")
+
+def main():
+    # Sidebar navigation
+    page = st.sidebar.selectbox(
+        "Choose a page",
+        [
+            "Project Summary",
+            "Feature Insights",
+            "Inherited Houses & Prediction",
+            "Hypotheses",
+            "Model Performance",
+        ],
+    )
