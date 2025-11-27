@@ -210,6 +210,14 @@ def show_summary_page():
     st.title("🏠 House Price Predictor")
     st.write("Project Summary")
 
+    # --- Project Dataset ---
+    st.subheader("📂 Project Dataset")
+    st.markdown("""
+    This project uses the **Ames Housing Dataset**, containing detailed information 
+    for over **1,400 residential properties** in Ames, Iowa.  
+    The dataset includes structural features, quality ratings, and lot characteristics.
+    """)
+
 def show_feature_insights_page():
     st.title("Feature Insights")
     st.write("This page will show which features are most strongly related to SalePrice.")
