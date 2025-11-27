@@ -70,7 +70,14 @@ def show_inherited_prediction_page():
     garage_area = st.sidebar.number_input(
         "Garage Area (sq ft)", min_value=0, max_value=1200, value=400, step=10
     )
-
+    
+    # Quality features
+    overall_qual = st.sidebar.slider(
+        "Overall Quality (1–10)", min_value=1, max_value=10, value=5
+    )
+    overall_cond = st.sidebar.slider(
+        "Overall Condition (1–10)", min_value=1, max_value=10, value=5
+    )
 
 def show_summary_page():
     st.title("Project Summary")
