@@ -194,6 +194,18 @@ def show_inherited_prediction_page():
     st.subheader("📐 Transformed Features (Model-Ready)")
     st.write(transformed_df)
 
+    # ---------------- Prediction section ------------------------
+    st.subheader("💰 Predicted Sale Price")
+
+    if st.button("Predict Price"):
+        prediction = rf_model.predict(transformed_df)[0]
+        st.success(f"Estimated Sale Price: ${prediction:,.0f}")
+        st.caption(
+            "Prediction generated using the trained Random Forest model on the Ames housing dataset."
+        )
+    else:
+        st.info("Adjust the inputs in the sidebar and click 'Predict Price' to see an estimate.")
+
 def show_summary_page():
     st.title("Project Summary")
     st.write("This page will describe the project, dataset, and client requirements.")
