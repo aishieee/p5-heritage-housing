@@ -44,6 +44,25 @@ def load_model():
 
 rf_model = load_model()
 
+# -----------------------------------------------------
+# Transform sidebar inputs into model-ready features
+# -----------------------------------------------------
+import numpy as np
+import pandas as pd
+
+MODEL_FEATURES = [
+    "GarageArea",
+    "OverallQual",
+    "OverallCond",
+    "KitchenQual",
+    "BsmtExposure",
+    "BsmtFinType1",
+    "GarageFinish",
+    "GrLivArea_log",
+    "TotalBsmtSF_log",
+    "LotArea_log",
+]
+
 # ---------------------------------------
 # Placeholder for sidebar page functions 
 # ---------------------------------------
