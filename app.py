@@ -13,5 +13,25 @@ def load_model():
 
 rf_model = load_model()
 
-st.title("Heritage Housing Price Prediction App")
-st.write("Model has been loaded.")
+# ---------------------------------------
+# Placeholder for sidebar page functions 
+# ---------------------------------------
+def show_inherited_prediction_page():
+    st.title("Inherited Houses & Price Prediction")
+    st.write("This page will show the 4 inherited houses and allow the user to predict prices.")
+
+def show_summary_page():
+    st.title("Project Summary")
+    st.write("This page will describe the project, dataset, and client requirements.")
+
+def show_feature_insights_page():
+    st.title("Feature Insights")
+    st.write("This page will show which features are most strongly related to SalePrice.")
+
+def show_hypotheses_page():
+    st.title("Project Hypotheses")
+    st.write("This page will explain the project hypotheses and how they were tested.")
+
+def show_model_performance_page():
+    st.title("Model Performance")
+    st.write("This page will show the model metrics and pipeline details.")
