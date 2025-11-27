@@ -218,6 +218,15 @@ def show_summary_page():
     The dataset includes structural features, quality ratings, and lot characteristics.
     """)
 
+    # --- Business Requirements ---
+    st.subheader("🧾 Business Requirements")
+    st.markdown("""
+    The client asked for:
+    1. **A study of which housing features are most strongly related to SalePrice.**  
+    2. **Predicted sale prices for four inherited houses.**  
+    3. **An interactive dashboard** to explore data, insights, models, and predictions.
+    """)
+
 def show_feature_insights_page():
     st.title("Feature Insights")
     st.write("This page will show which features are most strongly related to SalePrice.")
