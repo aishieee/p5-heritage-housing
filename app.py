@@ -98,6 +98,23 @@ def show_inherited_prediction_page():
         ["Unfinished", "Rough Finished", "Finished"]
     )
 
+    # Show the user inputs as a dictionary (for debugging before prediction)
+    st.subheader("📦 Current Inputs (Preview)")
+    raw_inputs = {
+        "1stFlrSF": first_flr,
+        "2ndFlrSF": second_flr,
+        "LotArea": lot_area,
+        "TotalBsmtSF": total_bsmt,
+        "GarageArea": garage_area,
+        "OverallQual": overall_qual,
+        "OverallCond": overall_cond,
+        "KitchenQual": KITCHEN_MAP[kitchen_qual],
+        "BsmtExposure": EXPOSURE_MAP[bsmt_exposure],
+        "BsmtFinType1": BSMT_FIN_MAP[bsmt_fin_type1],
+        "GarageFinish": GARAGE_FIN_MAP[garage_finish],
+    }
+    st.write(raw_inputs)
+
 def show_summary_page():
     st.title("Project Summary")
     st.write("This page will describe the project, dataset, and client requirements.")
