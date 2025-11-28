@@ -383,6 +383,36 @@ def show_hypotheses_page():
         """
     )
 
+  
+    # 1. --- Initial hypotheses --- 
+    st.subheader("📌 Initial Hypotheses")
+
+    st.markdown(
+        """
+        The following hypotheses were defined **before** data cleaning and modelling:
+
+        1. **Larger homes sell for higher prices.**  
+           Homes with greater living area (`GrLivArea`, `1stFlrSF`, `TotalBsmtSF`) 
+           and a larger overall footprint should achieve higher sale prices.
+
+        2. **Higher construction quality increases sale price.**  
+           `OverallQual` (materials and finish quality) is expected to be one of 
+           the strongest predictors of price.
+
+        3. **Homes with larger garages sell for higher prices.**  
+           Homes with bigger `GarageArea` and more garage spaces (`GarageCars`) 
+           are expected to sell for more.
+
+        4. **Newer or recently renovated homes are worth more.**  
+           `YearBuilt` and `YearRemodAdd` should be positively associated with 
+           sale price, as newer properties typically require less maintenance.
+
+        5. **Smaller features have limited influence.**  
+           Variables such as `BedroomAbvGr`, `EnclosedPorch` and `OverallCond` 
+           were expected to have weaker relationships with `SalePrice`.
+        """
+    )
+
 def show_model_performance_page():
     st.title("Model Performance")
     st.write("This page will show the model metrics and pipeline details.")
