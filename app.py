@@ -372,8 +372,16 @@ def show_feature_insights_page():
 
 
 def show_hypotheses_page():
-    st.title("Project Hypotheses")
-    st.write("This page will explain the project hypotheses and how they were tested.")
+    st.title("🧪 Project Hypotheses & Validation")
+
+    st.markdown(
+        """
+        This page summarises the main hypotheses defined after the initial
+        exploration of the Ames Housing dataset and explains **how they were
+        tested and supported** using exploratory data analysis (EDA) and
+        machine learning (ML) models.
+        """
+    )
 
 def show_model_performance_page():
     st.title("Model Performance")
