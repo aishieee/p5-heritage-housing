@@ -1,5 +1,6 @@
 import streamlit as st
 import joblib
+from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error
 
 # Label - code mappings
 KITCHEN_MAP = {
@@ -49,6 +50,9 @@ rf_model = load_model()
 def load_train_data():
     return pd.read_csv("data/processed/train_engineered.csv")
 
+@st.cache_resource
+def load_test_data():
+    return pd.read_csv("data/processed/test_engineered.csv")
 
 # -----------------------------------------------------
 # Transform sidebar inputs into model-ready features
