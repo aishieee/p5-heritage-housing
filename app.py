@@ -648,6 +648,42 @@ def show_model_performance_page():
         """
     )
 
+    # 3. --- Actual vs Predicted plot --- 
+    st.subheader("📈 Actual vs Predicted SalePrice (Random Forest)")
+
+    plot_df = pd.DataFrame(
+        {
+            "ActualSalePrice": y_test,
+            "PredictedSalePrice": y_pred_rf,
+        }
+    )
+
+    chart = (
+        alt.Chart(plot_df)
+        .mark_circle(size=40, opacity=0.5)
+        .encode(
+            x="ActualSalePrice",
+            y="PredictedSalePrice",
+            tooltip=["ActualSalePrice", "PredictedSalePrice"],
+        )
+        .interactive()
+    )
+
+    st.altair_chart(chart, use_container_width=True)
+
+    st.markdown(
+        """
+        The points are clustered close to the diagonal, which indicates that the
+        model predictions follow the actual sale prices closely.  
+        Larger deviations from the diagonal correspond to properties where the
+        model under- or over-estimates the price.
+
+        Overall, the evaluation confirms that the **Random Forest Regressor** is a
+        suitable final model for this problem: it generalises well to unseen data
+        and captures the main drivers of house prices in the Ames dataset.
+        """
+    )
+
 def main():
     # Sidebar navigation
     page = st.sidebar.selectbox(
