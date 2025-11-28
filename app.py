@@ -610,6 +610,44 @@ def show_model_performance_page():
         """
     )
 
+    # 2. --- Random Forest evaluation --- 
+    st.subheader("🌲 Random Forest Regressor (final model)")
+
+    test_df = load_test_data()
+    X_test = test_df[MODEL_FEATURES]
+    y_test = test_df["SalePrice"]
+
+    # Predictions
+    y_pred_rf = rf_model.predict(X_test)
+
+    # Metrics
+    r2_test_rf = r2_score(y_test, y_pred_rf)
+    rmse_test_rf = np.sqrt(mean_squared_error(y_test, y_pred_rf))
+    mae_test_rf = mean_absolute_error(y_test, y_pred_rf)
+
+    rf_metrics = pd.DataFrame(
+        {
+            "Dataset": ["Test"],
+            "R²": [r2_test_rf],
+            "RMSE": [rmse_test_rf],
+            "MAE": [mae_test_rf],
+        }
+    )
+
+    st.table(rf_metrics.style.format({"RMSE": "{:,.0f}", "MAE": "{:,.0f}", "R²": "{:.3f}"}))
+
+    st.markdown(
+        """
+        Compared with Linear Regression, the Random Forest:
+
+        * Achieves a **higher R²** on the test set (closer to 0.90).  
+        * Reduces the **RMSE and MAE**, meaning predictions are closer to the
+          true sale prices on average.
+        * Can capture **non-linear effects** and interactions between features
+          (for example, high quality *and* large living area).
+        """
+    )
+
 def main():
     # Sidebar navigation
     page = st.sidebar.selectbox(
