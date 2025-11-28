@@ -54,6 +54,11 @@ def load_train_data():
 def load_test_data():
     return pd.read_csv("data/processed/test_engineered.csv")
 
+# Load the 4 inherited houses with their predicted sale prices.
+@st.cache_resource
+def load_inherited_predictions():
+    return pd.read_csv("data/processed/inherited_predictions.csv")
+
 # -----------------------------------------------------
 # Transform sidebar inputs into model-ready features
 # -----------------------------------------------------
