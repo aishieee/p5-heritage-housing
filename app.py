@@ -461,6 +461,35 @@ def show_hypotheses_page():
         """
     )
 
+    # 3. --- Evidence from model performance --- 
+    st.subheader("📈 Evidence from Model Performance")
+
+    st.markdown(
+        """
+        The models achieved the following performance on the training/test sets:
+
+        * **Linear Regression (scaled features):**  
+          • Train R² ≈ **0.79**  
+          • Test R² ≈ **0.80**  
+          • Test RMSE ≈ **39,600** and Test MAE ≈ **24,300**
+
+          This shows that a simple linear model can already explain a large portion
+          of the variation in sale prices, which supports the idea that size and
+          quality have strong, mostly monotonic relationships with price.
+
+        * **Random Forest Regressor (unscaled features):**  
+          • Train R² ≈ **0.97**  
+          • Test R² ≈ **0.89**  
+          • Test RMSE ≈ **28,700** and Test MAE ≈ **17,800**
+
+          The Random Forest significantly reduces the error compared to Linear
+          Regression, especially MAE, indicating that non-linear effects and
+          interactions between size, quality, basement and garage features help
+          explain additional variation in `SalePrice`. This gives stronger support
+          to the hypotheses about these features being key drivers of price.
+        """
+    )
+
 def show_model_performance_page():
     st.title("Model Performance")
     st.write("This page will show the model metrics and pipeline details.")
