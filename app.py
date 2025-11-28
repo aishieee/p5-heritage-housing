@@ -303,6 +303,41 @@ def show_feature_insights_page():
         """
     )
 
+    # --- Plots: relationships with SalePrice ---
+    st.subheader("📈 View Feature vs. SalePrice Plots")
+
+    left_col, right_col = st.columns(2)
+
+    # Scatter: GrLivArea_log vs SalePrice
+    with left_col:
+        st.caption("GrLivArea_log vs SalePrice")
+        chart1 = (
+            alt.Chart(train_df)
+            .mark_circle(size=40, opacity=0.5)
+            .encode(
+                x="GrLivArea_log",
+                y="SalePrice",
+                tooltip=["GrLivArea_log", "SalePrice"],
+            )
+            .interactive()
+        )
+        st.altair_chart(chart1, use_container_width=True)
+
+    # Scatter: TotalBsmtSF_log vs SalePrice
+    with right_col:
+        st.caption("TotalBsmtSF_log vs SalePrice")
+        chart2 = (
+            alt.Chart(train_df)
+            .mark_circle(size=40, opacity=0.5)
+            .encode(
+                x="TotalBsmtSF_log",
+                y="SalePrice",
+                tooltip=["TotalBsmtSF_log", "SalePrice"],
+            )
+            .interactive()
+        )
+        st.altair_chart(chart2, use_container_width=True)
+
 
 def show_hypotheses_page():
     st.title("Project Hypotheses")
