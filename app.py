@@ -260,7 +260,17 @@ def show_feature_insights_page():
         .sort_values(by="Importance", ascending=False)
         .reset_index(drop=True)
     )
-       
+
+    # --- Client expectations ---
+    st.subheader("🧾 Client Expectations")
+    st.markdown(
+        """
+        The client wants to understand **which housing features are most desirable**
+        in terms of increasing sale price. In particular, they asked which 
+        variables they should focus on when **renovating or valuing properties**.
+        """
+    )
+
 def show_hypotheses_page():
     st.title("Project Hypotheses")
     st.write("This page will explain the project hypotheses and how they were tested.")
