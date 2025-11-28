@@ -529,6 +529,43 @@ def show_hypotheses_page():
         """
     )
 
+    # 5. --- Final Summary ---
+    st.subheader("✅ Summary of Findings")
+
+    st.markdown(
+        """
+        * **H1 – Larger homes sell for higher prices → Supported.**  
+          Log-transformed living area and basement size show strong positive
+          relationships with `SalePrice` in both the EDA plots and the Random
+          Forest feature importance ranking.
+
+        * **H2 – Higher construction quality increases sale price → Strongly supported.**  
+          `OverallQual` is both highly correlated with `SalePrice` and by far the
+          most important feature in the Random Forest model.
+
+        * **H3 – Homes with larger garages sell for higher prices → Supported.**  
+          `GarageArea` has a clear positive trend with `SalePrice` and appears among
+          the more important features, although it is less influential than overall
+          quality and main living area.
+
+        * **H4 – Newer or recently renovated homes are worth more → Partially supported.**  
+          `YearBuilt` and `YearRemodAdd` showed the expected positive trends in the
+          EDA, but their importance in the final model was lower than that of size
+          and quality features. Age still matters, but not as strongly as originally
+          expected.
+
+        * **H5 – Smaller features have limited influence → Supported.**  
+          Features such as `BedroomAbvGr`, `EnclosedPorch` and `OverallCond`
+          showed weaker correlations with `SalePrice` and did not appear as key
+          drivers in the model, confirming that they play a secondary role.
+
+        Overall, the combination of EDA, correlation analysis, model performance
+        and feature importance strongly supports the conclusion that **overall
+        quality and property size are the primary drivers of house prices in Ames**,
+        with garage size, basement size and age acting as secondary factors.
+        """
+    )
+
 def show_model_performance_page():
     st.title("Model Performance")
     st.write("This page will show the model metrics and pipeline details.")
