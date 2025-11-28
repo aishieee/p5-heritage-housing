@@ -338,6 +338,38 @@ def show_feature_insights_page():
         )
         st.altair_chart(chart2, use_container_width=True)
 
+    # Boxplot: OverallQual vs median SalePrice
+    st.caption("OverallQual vs Median SalePrice")
+    qual_df = (
+        train_df.groupby("OverallQual")["SalePrice"]
+        .median()
+        .reset_index()
+        .rename(columns={"SalePrice": "MedianSalePrice"})
+    )
+
+    chart3 = (
+        alt.Chart(qual_df)
+        .mark_bar()
+        .encode(
+            x="OverallQual:O",
+            y="MedianSalePrice:Q",
+            tooltip=["OverallQual", "MedianSalePrice"],
+        )
+    )
+    st.altair_chart(chart3, use_container_width=True)
+
+    st.markdown(
+        """
+        These plots reinforce the earlier finding:
+
+        - Houses with **larger living areas** and **larger basements** tend to sell for more.  
+        - As **OverallQual** increases, the **median SalePrice** rises sharply.
+
+        This provides the client with clear visual evidence of which improvements
+        are most likely to increase a property's market value.
+        """
+    )
+
 
 def show_hypotheses_page():
     st.title("Project Hypotheses")
