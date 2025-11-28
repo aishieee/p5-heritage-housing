@@ -44,6 +44,12 @@ def load_model():
 
 rf_model = load_model()
 
+# Load the engineered training data used to fit the model
+@st.cache_resource
+def load_train_data():
+    return pd.read_csv("data/processed/train_engineered.csv")
+
+
 # -----------------------------------------------------
 # Transform sidebar inputs into model-ready features
 # -----------------------------------------------------
@@ -243,9 +249,18 @@ def show_summary_page():
     """)
 
 def show_feature_insights_page():
-    st.title("Feature Insights")
-    st.write("This page will show which features are most strongly related to SalePrice.")
+    st.title("📊 House Sales Price Study")
 
+    # Load data and feature importances
+    train_df = load_train_data()
+
+    importances = rf_model.feature_importances_
+    importance_df = (
+        pd.DataFrame({"Feature": MODEL_FEATURES, "Importance": importances})
+        .sort_values(by="Importance", ascending=False)
+        .reset_index(drop=True)
+    )
+       
 def show_hypotheses_page():
     st.title("Project Hypotheses")
     st.write("This page will explain the project hypotheses and how they were tested.")
