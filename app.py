@@ -571,8 +571,14 @@ def show_hypotheses_page():
     )
 
 def show_model_performance_page():
-    st.title("Model Performance")
-    st.write("This page will show the model metrics and pipeline details.")
+    st.title("Model Performance & Evaluation")
+
+    st.markdown(
+        """
+        This page summarises how well the models perform on unseen data and 
+        explains why the Random Forest Regressor was chosen as the final model.
+        """
+    )
 
 def main():
     # Sidebar navigation
