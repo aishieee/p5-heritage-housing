@@ -274,6 +274,34 @@ def show_feature_insights_page():
     # Inspect House Price Data
     with st.expander("🔍 Inspect a sample of the training data"):
         st.write(train_df.head(10))
+    
+    # --- Feature importance ---
+    st.subheader("⭐ Most Influential Features for Sale Price")
+
+    st.markdown(
+        """
+        The chart below shows the **Random Forest feature importance scores**.  
+        Higher values mean that the feature plays a bigger role in the model's 
+        price predictions.
+        """
+    )
+
+    st.bar_chart(importance_df.set_index("Feature"))
+
+    top3 = importance_df["Feature"].head(3).tolist()
+
+    st.markdown(
+        f"""
+        The three most influential features in this model are:
+
+        - **{top3[0]}**  
+        - **{top3[1]}**  
+        - **{top3[2]}**
+
+        This confirms that **overall property quality** and **size of the living/basement
+        areas** are key drivers of sale price in the Ames housing market.
+        """
+    )
 
 
 def show_hypotheses_page():
