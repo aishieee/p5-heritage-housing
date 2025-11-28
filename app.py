@@ -145,7 +145,44 @@ def show_inherited_prediction_page():
         2. A **real-time price predictor** where the user can try out new house configurations.
         """
     )
-    
+
+    # Part 1: Inherited houses summary
+    st.subheader("🏡 Predicted Prices for the 4 Inherited Houses")
+
+    inherited_df = load_inherited_predictions()
+
+    # Show the table
+    st.dataframe(inherited_df)
+
+    # --- Individual predicted prices  ---
+    st.subheader("💵 Predicted Sale Price per House")
+
+    if "PredictedSalePrice" in inherited_df.columns:
+        for idx, row in inherited_df.iterrows():
+            house_num = idx + 1
+            price = row["PredictedSalePrice"]
+            st.markdown(f"- **House {house_num}: ${price:,.0f}**")
+    else:
+        st.warning("Prediction column not found in inherited houses file.")
+
+    # --- Total value ---
+    if "PredictedSalePrice" in inherited_df.columns:
+        total_value = inherited_df["PredictedSalePrice"].sum()
+        st.markdown(
+            f"""
+            **Total estimated value for all 4 inherited houses:**  
+            👉 **${total_value:,.0f}**
+            """
+        )
+
+    st.markdown("---")  
+
+    # Part 2: Real-time prediction form 
+    st.subheader("Check Your Own Predicted House Price")
+    st.write(
+        " 👈 Use the sidebar on the left to adjust the house features and generate a new prediction."
+    )
+
     # --------------- Sidebar inputs ---------------------
     st.sidebar.header("🔧 House Feature Inputs")
 
