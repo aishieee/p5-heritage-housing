@@ -580,6 +580,36 @@ def show_model_performance_page():
         """
     )
 
+    # 1. --- Linear Regression summary ---
+    st.subheader("📉 Linear Regression (baseline model)")
+
+    st.markdown(
+        """
+        A Linear Regression model was trained on the **scaled** engineered features.  
+        It provides a simple baseline assuming mostly linear relationships
+        between the predictors and `SalePrice`.
+        """
+    )
+
+    lr_metrics = pd.DataFrame(
+        {
+            "Dataset": ["Train", "Test"],
+            "R²": [0.786, 0.796],
+            "RMSE": [35724, 39582],
+            "MAE": [23172, 24307],
+        }
+    )
+
+    st.table(lr_metrics.style.format({"RMSE": "{:,.0f}", "MAE": "{:,.0f}"}))
+
+    st.markdown(
+        """
+        These results show that a basic linear model can already explain close to 
+        **80% of the variance** in house prices, but the error values leave room 
+        for improvement, especially for more complex properties.
+        """
+    )
+
 def main():
     # Sidebar navigation
     page = st.sidebar.selectbox(
