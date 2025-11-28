@@ -137,8 +137,15 @@ def transform_inputs(raw_inputs: dict) -> pd.DataFrame:
 # ---------------------------------------
 def show_inherited_prediction_page():
     st.title("Inherited Houses & Price Prediction")
-    st.write("This page will show the 4 inherited houses and allow the user to predict prices.")
+    st.write(
+        """
+        This page has two parts:
 
+        1. A summary of the **4 inherited houses** and their predicted sale prices.  
+        2. A **real-time price predictor** where the user can try out new house configurations.
+        """
+    )
+    
     # --------------- Sidebar inputs ---------------------
     st.sidebar.header("🔧 House Feature Inputs")
 
