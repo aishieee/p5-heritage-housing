@@ -490,6 +490,45 @@ def show_hypotheses_page():
         """
     )
 
+    # 4. --- Evidence from feature importance ---
+    st.subheader("Evidence from Feature Importance")
+
+    importances = rf_model.feature_importances_
+    importance_df = (
+        pd.DataFrame({"Feature": MODEL_FEATURES, "Importance": importances})
+        .sort_values(by="Importance", ascending=False)
+        .reset_index(drop=True)
+    )
+
+    top_rows = importance_df.head(5)
+
+    st.markdown(
+        """
+        The Random Forest feature importance values provide direct evidence of how
+        much each engineered feature contributed to the final predictions.
+        """
+    )
+
+    st.dataframe(top_rows)
+
+    st.markdown(
+        """
+        In this project:
+
+        * **`OverallQual`** has the highest importance (around **0.58**), confirming
+          that construction and finish quality is the most influential single factor.
+        * **`GrLivArea_log`** (above-ground living area) has the second-highest
+          importance (around **0.18**), matching the hypothesis that larger homes
+          sell for more.
+        * **`TotalBsmtSF_log`**, **`GarageArea`** and **`LotArea_log`** follow next,
+          supporting the idea that basement size, garage size and lot size all add
+          value, although to a lesser degree than overall quality and main living area.
+        * Variables such as `BsmtFinType1`, `KitchenQual`, `GarageFinish` and
+          `BsmtExposure` have smaller, but still meaningful, contributions and help
+          refine the price estimate.
+        """
+    )
+
 def show_model_performance_page():
     st.title("Model Performance")
     st.write("This page will show the model metrics and pipeline details.")
