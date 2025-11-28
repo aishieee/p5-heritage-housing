@@ -271,6 +271,11 @@ def show_feature_insights_page():
         """
     )
 
+    # Inspect House Price Data
+    with st.expander("🔍 Inspect a sample of the training data"):
+        st.write(train_df.head(10))
+
+
 def show_hypotheses_page():
     st.title("Project Hypotheses")
     st.write("This page will explain the project hypotheses and how they were tested.")
