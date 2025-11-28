@@ -136,6 +136,11 @@ def transform_inputs(raw_inputs: dict) -> pd.DataFrame:
 # Placeholder for sidebar page functions 
 # ---------------------------------------
 def show_inherited_prediction_page():
+    # Hero Image
+    st.image(
+        "images/iowa-neighbourhood.avif", 
+        width=600
+    )
     st.title("Inherited Houses & Price Prediction")
     st.write(
         """
@@ -184,6 +189,9 @@ def show_inherited_prediction_page():
     )
 
     # --------------- Sidebar inputs ---------------------
+    st.sidebar.image("images/house-for-sale-sign.webp", use_container_width=True)
+    
+    # Sidebar image
     st.sidebar.header("🔧 House Feature Inputs")
 
     # Size features
