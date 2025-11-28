@@ -413,6 +413,54 @@ def show_hypotheses_page():
         """
     )
 
+    # 2. --- How / Why --- 
+    st.subheader("🔍 How the Hypotheses Were Tested and Why")
+
+    st.markdown(
+        """
+        To test these hypotheses in a structured way, the project used a combination of:
+
+        **1. Correlation analysis (Pearson correlation matrix).**  
+        This was used to quickly identify **linear relationships** between numerical
+        variables and `SalePrice`. It is appropriate here because most of the main
+        predictors (size, quality scores, years) are numeric and reasonably continuous.
+        The correlation heatmap in the EDA notebook showed that:
+
+        * `OverallQual` and `GrLivArea` had some of the **strongest positive correlations**
+          with `SalePrice`.
+        * Basement area and garage size also showed positive, but slightly weaker,
+          correlations.
+        * Features such as `BedroomAbvGr` and `EnclosedPorch` had noticeably lower
+          correlations with price.
+
+        **2. Visual explorations (scatterplots and grouped summaries).**  
+        Scatterplots of `GrLivArea`, `TotalBsmtSF` and `GarageArea` against `SalePrice`
+        were used to visually confirm the trends seen in the correlation matrix.  
+        Grouped summaries (e.g. median `SalePrice` by `OverallQual`) showed a clear,
+        almost stepwise increase in price as quality improved.
+
+        **3. Feature engineering and transformations.**  
+        Several features (`GrLivArea`, `LotArea`, `TotalBsmtSF`) were log-transformed
+        to reduce skew and make the relationships with `SalePrice` more linear.  
+        This choice was important for Linear Regression, which assumes a more linear
+        relationship, and also helped stabilise the scale for the Random Forest model.
+
+        **4. Two complementary ML models.**  
+        A **Linear Regression** model was used as a simple baseline to test whether a
+        mostly linear relationship could already explain a large portion of the
+        variation in house prices.  
+
+        A **Random Forest Regressor** was then trained as the main model, because it can:
+        * capture **non-linear relationships** (e.g. quality thresholds),
+        * handle interactions between features (e.g. large size *and* high quality),
+        * and is robust to outliers and different feature scales.
+
+        Comparing these two models helps validate whether the relationships suggested
+        in the hypotheses are strong enough to be learned by both simple and more
+        flexible algorithms.
+        """
+    )
+
 def show_model_performance_page():
     st.title("Model Performance")
     st.write("This page will show the model metrics and pipeline details.")
