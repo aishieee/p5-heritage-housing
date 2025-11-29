@@ -244,6 +244,73 @@ This ensures the client has a reliable, data-driven tool rather than relying on 
 
 ## Model Requirements
 
+Because the client needs to estimate house sale prices in Ames, Iowa, this project requires a **supervised machine learning regression model**. The goal is to map a set of house attributes (features) to a continuous numerical output (SalePrice).
+
+### Type of Model Needed
+The dataset suggests a **regression approach**, as the target variable (`SalePrice`) is continuous.  
+Conventional machine learning methods such as **Linear Regression** and **Random Forest Regression** are suitable and were explored in this project.
+
+### Model Inputs
+The model receives the engineered house attributes selected after feature analysis and cleaning.  
+The final Random Forest model uses the following **10 features**:
+
+- `GarageArea`
+- `OverallQual`
+- `OverallCond`
+- `KitchenQual` (ordinal encoded)
+- `BsmtExposure` (ordinal encoded)
+- `BsmtFinType1` (ordinal encoded)
+- `GarageFinish` (ordinal encoded)
+- `GrLivArea_log` (log-transformed)
+- `TotalBsmtSF_log` (log-transformed)
+- `LotArea_log` (log-transformed)
+
+These features were chosen because they demonstrated strong predictive value in the EDA and feature importance study.
+
+### Model Output
+The model predicts:
+
+- **The sale price (in USD) of a given house**, based on its features.
+
+This includes:
+- The **four inherited houses** the client owns.
+- **Any new house** the client wishes to evaluate through the Streamlit dashboard.
+
+### Performance Criteria
+During the Business Case Assessment, the following performance requirement was agreed with the client:
+
+- The model should achieve an **R² score of at least 0.75** on both the training and test datasets.
+
+This ensures that the model captures enough variability in the housing market to produce reliable price estimates.
+
+### Models Evaluated
+Two models were trained and compared:
+
+1. **Linear Regression (scaled features)**  
+   - Train R² ≈ 0.786  
+   - Test R² ≈ 0.796  
+
+2. **Random Forest Regressor (unscaled features)**  
+   - Train R² ≈ 0.974  
+   - Test R² ≈ 0.892  
+
+Both models met the minimum performance requirement, but the Random Forest model achieved:
+
+- Higher R²  
+- Lower error (RMSE and MAE)  
+- Better ability to capture non-linear relationships  
+
+Therefore, **Random Forest** was selected as the final model.
+
+### Why This Model Meets the Client’s Needs
+The final model:
+
+- Reliably predicts house sale prices with strong accuracy.
+- Meets and exceeds the agreed R² performance threshold.
+- Can estimate the sale price of the four inherited houses.
+- Can be used interactively via the dashboard to predict future property values.
+- Identifies the features most strongly associated with `SalePrice`, helping the client understand what drives value in the Ames housing market.
+
 ### The client defined success as:
     - R² score ≥ 0.75 on both the training and test sets
     - Accurate predictions for all 4 inherited houses
