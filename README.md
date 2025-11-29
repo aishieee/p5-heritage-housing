@@ -43,41 +43,76 @@ Lydia located a publicly available dataset containing historical house prices fo
 
 To meet these requirements, a ML regression model is developed and integrated into an interactive Streamlit dashboard that presents the insights and predictions in an accessible, user-friendly format.
 
-
-
 ## Dataset Content
 
-* The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). We then created a fictitious user story where predictive analytics can be applied in a real project in the workplace.
-* The dataset has almost 1.5 thousand rows and represents housing records from Ames, Iowa, indicating house profile (Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses built between 1872 and 2010.
+This project uses the **Ames Housing Dataset**, originally compiled by Dean De Cock and made publicly available on [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data).  
+The dataset contains detailed structural, qualitative, and locational attributes for residential properties in Ames, Iowa, and is commonly used for house price prediction tasks.
 
-|Variable|Meaning|Units|
-|:----|:----|:----|
-|1stFlrSF|First Floor square feet|334 - 4692|
-|2ndFlrSF|Second-floor square feet|0 - 2065|
-|BedroomAbvGr|Bedrooms above grade (does NOT include basement bedrooms)|0 - 8|
-|BsmtExposure|Refers to walkout or garden level walls|Gd: Good Exposure; Av: Average Exposure; Mn: Minimum Exposure; No: No Exposure; None: No Basement|
-|BsmtFinType1|Rating of basement finished area|GLQ: Good Living Quarters; ALQ: Average Living Quarters; BLQ: Below Average Living Quarters; Rec: Average Rec Room; LwQ: Low Quality; Unf: Unfinshed; None: No Basement|
-|BsmtFinSF1|Type 1 finished square feet|0 - 5644|
-|BsmtUnfSF|Unfinished square feet of basement area|0 - 2336|
-|TotalBsmtSF|Total square feet of basement area|0 - 6110|
-|GarageArea|Size of garage in square feet|0 - 1418|
-|GarageFinish|Interior finish of the garage|Fin: Finished; RFn: Rough Finished; Unf: Unfinished; None: No Garage|
-|GarageYrBlt|Year garage was built|1900 - 2010|
-|GrLivArea|Above grade (ground) living area square feet|334 - 5642|
-|KitchenQual|Kitchen quality|Ex: Excellent; Gd: Good; TA: Typical/Average; Fa: Fair; Po: Poor|
-|LotArea| Lot size in square feet|1300 - 215245|
-|LotFrontage| Linear feet of street connected to property|21 - 313|
-|MasVnrArea|Masonry veneer area in square feet|0 - 1600|
-|EnclosedPorch|Enclosed porch area in square feet|0 - 286|
-|OpenPorchSF|Open porch area in square feet|0 - 547|
-|OverallCond|Rates the overall condition of the house|10: Very Excellent; 9: Excellent; 8: Very Good; 7: Good; 6: Above Average; 5: Average; 4: Below Average; 3: Fair; 2: Poor; 1: Very Poor|
-|OverallQual|Rates the overall material and finish of the house|10: Very Excellent; 9: Excellent; 8: Very Good; 7: Good; 6: Above Average; 5: Average; 4: Below Average; 3: Fair; 2: Poor; 1: Very Poor|
-|WoodDeckSF|Wood deck area in square feet|0 - 736|
-|YearBuilt|Original construction date|1872 - 2010|
-|YearRemodAdd|Remodel date (same as construction date if no remodelling or additions)|1950 - 2010|
-|SalePrice|Sale Price|34900 - 755000|
+### Dataset Overview
 
+- **Rows:** ~1,460 observations  
+- **Columns:** 79 variables  
+- **Time span:** Houses built between **1872 and 2010**  
+- **Target variable:** `SalePrice` (the final sale price of the property)
 
+Each row represents a single house and describes features such as lot size, living area, basement finish type, kitchen quality, number of rooms, and garage characteristics.
+
+### Key Variables Used in This Project
+
+Although the full dataset contains 79 variables, this project focuses on the variables most relevant to the client’s business requirements.  
+Below is a summary of the main features used in the modelling and dashboard analysis:
+
+| Variable | Description | Typical Range / Categories |
+|---------|-------------|---------------------------|
+| **1stFlrSF** | First floor living area (sq ft) | 334 – 4692 |
+| **2ndFlrSF** | Second floor living area (sq ft) | 0 – 2065 |
+| **BedroomAbvGr** | Bedrooms above ground | 0 – 8 |
+| **BsmtExposure** | Basement exposure / walkout type | Gd, Av, Mn, No |
+| **BsmtFinType1** | Basement finish quality/type | GLQ, ALQ, BLQ, Rec, LwQ, Unf |
+| **BsmtFinSF1** | Finished basement area (sq ft) | 0 – 5644 |
+| **BsmtUnfSF** | Unfinished basement area (sq ft) | 0 – 2336 |
+| **TotalBsmtSF** | Total basement area (sq ft) | 0 – 6110 |
+| **GarageArea** | Garage size (sq ft) | 0 – 1418 |
+| **GarageFinish** | Interior finish of garage | Fin, RFn, Unf |
+| **GrLivArea** | Above-ground living area (sq ft) | 334 – 5642 |
+| **KitchenQual** | Kitchen quality | Ex, Gd, TA, Fa, Po |
+| **LotArea** | Lot size (sq ft) | 1,300 – 215,245 |
+| **LotFrontage** | Street-facing linear feet | 21 – 313 |
+| **MasVnrArea** | Masonry veneer area (sq ft) | 0 – 1600 |
+| **EnclosedPorch** | Enclosed porch area (sq ft) | 0 – 286 |
+| **OpenPorchSF** | Open porch area (sq ft) | 0 – 547 |
+| **OverallCond** | Overall condition of house (1–10) | 1 – 10 |
+| **OverallQual** | Overall material/finish quality (1–10) | 1 – 10 |
+| **WoodDeckSF** | Wood deck area (sq ft) | 0 – 736 |
+| **YearBuilt** | Original construction year | 1872 – 2010 |
+| **YearRemodAdd** | Year remodeled (or year built if unchanged) | 1950 – 2010 |
+| **SalePrice** | Final sale price (USD) | $34,900 – $755,000 |
+
+### Why This Dataset Was Chosen
+
+The Ames Housing dataset is suitable for this project because:
+
+- It directly reflects the **Iowa property market**, aligning with the client’s needs.
+- It contains enough historical data to train a reliable predictive model.
+- It includes the types of variables the client is curious about (quality, size, basement, garage, living area).
+- It is already publicly available and ethically safe to use.
+
+### Variables Used for Modelling
+
+After data cleaning and feature engineering, the following **10 engineered features** were used in the final Random Forest model:
+
+- `GarageArea`  
+- `OverallQual`  
+- `OverallCond`  
+- `KitchenQual` (ordinal encoded)  
+- `BsmtExposure` (ordinal encoded)  
+- `BsmtFinType1` (ordinal encoded)  
+- `GarageFinish` (ordinal encoded)  
+- `GrLivArea_log` (log-transformed)  
+- `TotalBsmtSF_log` (log-transformed)  
+- `LotArea_log` (log-transformed)
+
+These features were selected based on correlation analysis, predictive power, and alignment with the client’s business questions.
 
 ## Hypothesis
 
