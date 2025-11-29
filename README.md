@@ -1,16 +1,3 @@
-
-## Cloud IDE Reminders
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In your Cloud IDE, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with *Regenerate API Key*.
-
 ## Introduction
 
 This project is the final requirement for the Code Institute Diploma in Full Stack Software Development (Predictive Analytics).  
@@ -174,7 +161,7 @@ To answer this requirement, the project implements a ML regression model:
 
 This satisfies the client’s second requirement to accurately predict house prices based on their attributes.
 
-**Business Requirement 3** - Provide insights and predictions through an interactive dashboard
+**Dashboard Deliverable** - Provide insights and predictions through an interactive dashboard
 
 The project includes a Streamlit dashboard that allows the client to:
     - View EDA visualisations 
@@ -205,7 +192,7 @@ The objective of this project is to build a supervised machine learning system t
 
 #### Type of ML Task:
 
-This is a supervised regression task because the **target variable `SalePrice`** is continuous and the model learns patterns from labelled hitorical data. 
+This is a supervised regression task because the **target variable `SalePrice`** is continuous and the model learns patterns from labelled historical data. 
 
 #### Variables
 
@@ -392,7 +379,7 @@ This page demonstrates clear reasoning and transparent analysis for the client a
 
 **Page 5 – Model Performance & Evaluation**
 
-![Model Performance & Evaluation*](images/model-performance.png)
+![Model Performance & Evaluation](images/model-performance.png)
 
 This page presents how well the machine learning models performed on unseen data. It includes:
 
@@ -422,7 +409,7 @@ Testing was carried out using:
 - Manual testing of the data preparation and modelling notebooks.
 - Manual, scenario-based testing of the Streamlit dashboard.
 - Visual inspection of plots and feature importance to verify that the results were sensible.
-- Automatiic tesing of the `app.py` file for PEP8 compliance using the Code Institute Python Linter. 
+- Automatic tesing of the `app.py` file for PEP8 compliance using the Code Institute Python Linter. 
 
 The app was run locally using `streamlit run app.py` and tested in a modern desktop browser.
 
@@ -555,28 +542,53 @@ Despite these limitations, the Streamlit dashboard behaves reliably in normal us
 5. The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
 6. If the slug size is too large then add large files not required for the app to the .slugignore file.
 
-## Main Data Analysis and Machine Learning Libraries
-
-* Here you should list the libraries you used in the project and provide example(s) of how you used these libraries.
-
 ## Credits
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism.
-* You can break the credits section up into Content and Media, depending on what you have included in your project.
+This section acknowledges all external sources, tutorials, templates, and media used throughout the development of this project. Proper credit is given to maintain transparency and avoid plagiarism.
 
 ### Content
 
-* The text for the Home page was taken from Wikipedia Article A
-* Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-* The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+- The initial project structure was built using the Code Institute template for this milestone project:  
+[Heritage Housing Issues Template](https://github.com/Code-Institute-Solutions/milestone-project-heritage-housing-issues.git)
+
+- The project workflow, data-cleaning steps, modelling stages, and dashboard structure were guided by the Code Institute Predictive Analytics curriculum.
+
+- Several explanations, debugging support, code refinements, and documentation phrasing were supported by [ChatGPT](https://chat.openai.com/), used as a learning and productivity tool throughout the project.
+
+- Additional guidance on feature engineering was taken from:  
+[DataCamp — Feature Engineering in Python](ttps://www.datacamp.com/tutorial/feature-engineering)
+
+- General Python, pandas, and scikit-learn development was supported by: 
+  - [W3schools](https://www.w3schools.com/)
+  - [Official scikit-learn documentation](https://scikit-learn.org/stable/user_guide.html)
+  - [Streamlit documentation](https://docs.streamlit.io/)
 
 ### Media
 
-* The photos used on the home and sign-up page are from This Open Source site
-* The images used for the gallery page were taken from this other open-source site
+- **Hero Image (Inherited Houses Page)**  
+  Sourced from:  
+  https://adampretorius.com/neighborhoods/peninsula-neighborhood  
 
-## Acknowledgements (optional)
+- **Sidebar Image (Inherited Houses Page)**  
+  Sourced from Clifton Gray Real Estate:  
+  https://www.cliftongray.co.uk/wp-content/uploads/depositphotos_9433517-stock-photo-house-for-sale-real-estate.webp
 
 
-* In case you would like to thank the people that provided support through this project.
+### Tools & Libraries
+
+This project used the following tools and libraries:
+
+- **Python 3.11**
+- **pandas**, **numpy**
+- **scikit-learn**
+- **Streamlit**
+- **Altair**  
+- **joblib**
+- **Jupyter Notebook**
+- **GitHub** for version control and project hosting
+
+### Acknowledgements
+
+- Code Institute course materials for guidance on data analysis, feature engineering, modelling, and dashboard development.
+- ChatGPT for assistance with concept explanations, debugging issues, code refinement, and generating documentation text included in this README.
 
