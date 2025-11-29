@@ -328,9 +328,134 @@ The final model:
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items that your dashboard library supports.
 * Eventually, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but eventually you needed to use another plot type)
 
+## Testing
+
+This section describes how the Heritage Housing Price Prediction project was tested, both in terms of the machine learning models and the Streamlit data web app.
+
+### Testing Strategy
+
+Testing was carried out using:
+
+- Manual testing of the data preparation and modelling notebooks.
+- Manual, scenario-based testing of the Streamlit dashboard.
+- Visual inspection of plots and feature importance to verify that the results were sensible.
+- Automatiic tesing of the `app.py` file for PEP8 compliance using the Code Institute Python Linter. 
+
+The app was run locally using `streamlit run app.py` and tested in a modern desktop browser.
+
+---
+
+### 1. Code Validation (PEP8 Compliance)
+
+The `app.py` file was tested for PEP8 compliance using the Code Institute Python Linter.  
+The code was copied into the CI Linter tool, and the results returned:
+
+**“All clear, no errors found.”**
+
+This confirms that the dashboard code meets standard Python style guidelines and does not contain any syntax or formatting issues that violate PEP8 conventions.
+
+![CI Python Linter Results](images/cl-python-linter.png)
+
+### 2. Data and Modelling Tests
+
+#### 2.1 Data integrity
+
+| Test | Description | Result |
+|------|-------------|--------|
+| Missing values in model features | Confirm that the engineered training and test sets (`train_engineered.csv`, `test_engineered.csv`) contain no `NaN` values in the final model feature set. | ✅ All model features were confirmed to have no missing values after imputation and encoding. |
+| Data types | Check that numerical features (areas, quality scores, years) are stored as numeric types and that encoded categoricals are integers. | ✅ All model input columns have appropriate numeric dtypes. |
+| Log-transformed features | Verify that `GrLivArea_log`, `TotalBsmtSF_log` and `LotArea_log` were correctly created using `np.log1p`. | ✅ Values match manual checks on sample rows. |
+
+#### 2.2 Model performance checks
+
+The following results were obtained in the modelling notebook and confirmed in the Streamlit app.
+
+**Linear Regression (scaled features)**  
+- Train R²: **0.786**  
+- Test R²: **0.796**  
+- Test RMSE: **39,582**  
+- Test MAE: **24,307**
+
+**Random Forest Regressor (unscaled features)**  
+- Train R²: **0.974**  
+- Test R²: **0.892**  
+- Test RMSE: **28,719**  
+- Test MAE: **17,786**
+
+These values were used to check that:
+
+- The Random Forest model improves on Linear Regression, especially in terms of MAE.
+- There is no extreme overfitting (Train R² is higher, but Test R² remains strong at ~0.89).
+
+---
+
+### 3. Streamlit Dashboard – Manual Testing
+
+The Streamlit dashboard was tested by navigating through each page and checking that widgets, plots and calculations behaved as expected.
+
+#### 3.1 Navigation and layout
+
+| Test ID | Scenario | Expected Result | Actual Result |
+|--------|----------|-----------------|---------------|
+| NAV-01 | Start the app with `streamlit run app.py`. | App launches without errors and default page loads. | ✅ Pass |
+| NAV-02 | Use the sidebar dropdown to switch between all five pages. | Each of the following pages loads correctly: Project Summary, Feature Insights, Inherited Houses & Price Prediction, Hypotheses, Model Performance. | ✅ Pass |
+| NAV-03 | Resize the browser window. | Layout remains readable on smaller widths; no widgets overlap or disappear. | ✅ Pass |
+
+#### 3.2 Project Summary page
+
+| Test ID | Scenario | Expected Result | Actual Result |
+|--------|----------|-----------------|---------------|
+| SUM-01 | Open the **Project Summary** page. | Title, dataset description and business requirements are displayed. | ✅ Pass |
+| SUM-02 | Click the README link button. | GitHub README opens in a new browser tab. | ✅ Pass |
+
+#### 3.3 Feature Insights page
+
+| Test ID | Scenario | Expected Result | Actual Result |
+|--------|----------|-----------------|---------------|
+| FEAT-01 | Open **Feature Insights** page. | Client expectations text and explanation are shown. | ✅ Pass |
+| FEAT-02 | Expand the “Inspect a sample of the training data” expander. | A table with sample rows from the training data is displayed. | ✅ Pass |
+| FEAT-03 | Check feature importance chart. | Bar chart appears with all 10 model features ordered by importance. | ✅ Pass |
+| FEAT-04 | View feature vs sale price plots. | Scatter plots and bar chart render correctly and respond to hover tooltips. | ✅ Pass |
+
+#### 3.4 Inherited Houses & Price Prediction page
+
+| Test ID | Scenario | Expected Result | Actual Result |
+|--------|----------|-----------------|---------------|
+| INH-01 | Open **Inherited Houses & Price Prediction** page. | Hero image, title, and description of the two page parts are visible. | ✅ Pass |
+| INH-02 | Check inherited houses table. | Table shows 4 rows (one per inherited house) with their attributes and `PredictedSalePrice`. | ✅ Pass |
+| INH-03 | Verify per-house prices. | Under “Predicted Sale Price per House”, four bullet points are shown, one for each house, with correctly formatted prices. | ✅ Pass |
+| INH-04 | Verify total value. | “Total estimated value for all 4 inherited houses” equals the sum of the four predicted prices. | ✅ Pass |
+| INH-05 | Adjust sidebar inputs and click **Predict Price**. | A new predicted price is displayed in a green success box; no errors occur. | ✅ Pass |
+| INH-06 | Try extreme but valid values (e.g. very large living area). | Prediction is still generated and app remains responsive. | ✅ Pass |
+
+#### 3.5 Hypotheses page
+
+| Test ID | Scenario | Expected Result | Actual Result |
+|--------|----------|-----------------|---------------|
+| HYP-01 | Open **Hypotheses** page. | All hypotheses are listed with clear explanations. | ✅ Pass |
+| HYP-02 | Scroll down to results section. | Section summarising which hypotheses are supported / partially supported is visible and consistent with model results. | ✅ Pass |
+| HYP-03 | Check feature importance table on this page. | Top 5 features and their importance values are displayed without error. | ✅ Pass |
+
+#### 3.6 Model Performance page
+
+| Test ID | Scenario | Expected Result | Actual Result |
+|--------|----------|-----------------|---------------|
+| PERF-01 | Open **Model Performance** page. | Intro text and Linear Regression metrics table are displayed. | ✅ Pass |
+| PERF-02 | Verify Random Forest metrics. | Test R², RMSE and MAE values are computed and shown; values are consistent with the modelling notebook. | ✅ Pass |
+| PERF-03 | Check Actual vs Predicted plot. | Scatter plot appears; points cluster around the diagonal; tooltips show actual and predicted prices. | ✅ Pass |
+
+---
+
+### 4. Known Issues and Limitations
+
+- The app does not currently include formal validation for unrealistic user inputs (for example, extremely large numbers that are outside the range of the original training data). Sliders and minimum/maximum values partially mitigate this.
+- No automated unit tests have been implemented; all testing is manual.
+
+Despite these limitations, the Streamlit dashboard behaves reliably in normal use, and the models provide stable and consistent predictions for houses within the range of the Ames dataset.
+
 ## Unfixed Bugs
 
-* You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not valid reason to leave bugs unfixed.
+**No bugs found**
 
 ## Deployment
 
