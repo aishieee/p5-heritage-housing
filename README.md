@@ -325,8 +325,91 @@ The final model:
 
 ## Dashboard Design
 
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items that your dashboard library supports.
-* Eventually, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but eventually you needed to use another plot type)
+This section outlines the final Streamlit dashboard created for the client.
+Each page is supported by a screenshot and a short explanation describing what the client sees and how it meets the business requirements.
+
+**Page 1 – Project Summary**
+
+![Project Summary](images/project-summary.png)
+
+This page provides a high-level overview of the project. It includes:
+
+* The Project Title (“House Price Predictor”)
+* A description of the Ames Housing Dataset
+* The client’s business requirements
+* A link to the full project README
+* Dataset guidelines (encodings, transformations, missing values)
+
+This page ensures the client understands the purpose, data source, and scope before they continue exploring the dashboard.
+
+**Page 2 – House Sales Price Study (Feature Insights)**
+
+![Feature Insights](images/feature-insights.png)
+
+This page addresses **Business Requirement 1: identifying which housing features have the strongest relationship with SalePrice**.
+
+It includes:
+
+* A summary of the client’s expectations
+* A button allowing the client to inspect a small preview of the training dataset
+* A Random Forest Feature Importance bar chart
+* A list of the three most influential features:
+
+  * OverallQual
+  * GrLivArea_log
+  * TotalBsmtSF_log
+
+This page helps the client understand which features they should prioritise when renovating, valuing, or analysing houses in Ames, Iowa.
+
+**Page 3 – Inherited Houses & Price Prediction**
+
+![Inherited Houses & Price Prediction](images/ih-price-prediction.png)
+
+This page addresses **Business Requirement 2: predicting the sale price of the four inherited houses and any other property in Ames**.
+
+The page features:
+
+* A hero image showing an Ames neighbourhood
+* Sidebar input widgets for house attributes (e.g., floor area, basement size, quality ratings)
+* A preview table of the four inherited houses
+* Model-generated predicted prices for each property
+* A total estimated combined value of all four inherited homes
+
+This page allows the client to test new configurations and forecast sale prices in real time.
+
+**Page 4 – Project Hypotheses & Validation**
+
+![Project Hypotheses & Validation](images/hypotheses.png)
+
+This page includes:
+
+* A list of initial hypotheses created during early EDA
+* A detailed explanation of how each hypothesis was tested
+* Tools used for validation (correlations, scatterplots, feature importance, model performance)
+* Evidence showing which hypotheses were confirmed and which were weakly supported
+
+This page demonstrates clear reasoning and transparent analysis for the client and assessor.
+
+**Page 5 – Model Performance & Evaluation**
+
+![Model Performance & Evaluation*](images/model-performance.png)
+
+This page presents how well the machine learning models performed on unseen data. It includes:
+
+**Linear Regression (baseline model)**
+
+* Train R² ≈ 0.78
+* Test R² ≈ 0.80
+* RMSE and MAE values
+
+**Random Forest (final model)**
+
+* Test R² ≈ 0.89
+* Lower RMSE and MAE
+
+The page also includes a scatter plot comparing **Actual vs Predicted SalePrice**, which visually confirms the model’s accuracy.
+
+This section clearly demonstrates that the final model met and exceeded the client’s performance requirement of achieving an R² ≥ 0.75.
 
 ## Testing
 
