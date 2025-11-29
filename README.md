@@ -1,23 +1,4 @@
 
-
-## How to use this repo
-
-1. Use this template to create your GitHub project repo
-
-2. In your new repo click on the green Code button
-
-3. Then, from the Codespaces tab, click Create codespace on main.
-
-5. Wait for the workspace to open. This can take a few minutes.
-
-6. Open a new terminal and `pip3 install -r requirements.txt`
-
-7. Open the jupyter_notebooks directory and click on the notebook you want to open.
-
-8. Click the kernel button and choose Python Environments.
-
-Note that the kernel says Python 3.12.1 as it inherits from the workspace so it will be Python-3.12.1 as installed by Codespaces. To confirm this you can use `! python --version` in a notebook code cell.
-
 ## Cloud IDE Reminders
 
 To log into the Heroku toolbelt CLI:
@@ -29,6 +10,22 @@ To log into the Heroku toolbelt CLI:
 5. Paste in your API key when asked
 
 You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with *Regenerate API Key*.
+
+## Introduction
+
+This project is the final requirement for the Code Institute Diploma in Full Stack Software Development (Predictive Analytics).  
+Its purpose is to support a client who wants to understand what makes a house valuable and to predict the sale prices of four homes they have inherited in Ames, Iowa.
+
+The project uses the Ames Housing dataset from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data) and applies data cleaning, exploratory data analysis (EDA), feature engineering, and machine learning (ML) to build an accurate house price prediction model.  
+The results are presented in an interactive Streamlit dashboard that allows the client to:
+
+- explore key factors that influence house prices,
+- view model performance,
+- see predicted prices for their inherited properties, and
+- generate real-time predictions for any house configuration.
+
+A link to the deployed dashboard...
+
 
 ## Dataset Content
 
