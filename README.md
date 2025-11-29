@@ -523,9 +523,61 @@ The Streamlit dashboard was tested by navigating through each page and checking 
 
 Despite these limitations, the Streamlit dashboard behaves reliably in normal use, and the models provide stable and consistent predictions for houses within the range of the Ames dataset.
 
-## Unfixed Bugs
+## Bug Fixes
 
-**No bugs found**
+### 1. NaN Values Causing the Model Performance Page to Crash
+
+**Issue:**  
+During deployment on Heroku, the Model Performance & Evaluation page failed to load and displayed the following error:
+
+```
+
+ValueError: Input X contains NaN. RandomForestRegressor does not accept missing values encoded as NaN.
+
+````
+
+This happened when the app attempted to run:
+
+```python
+y_pred_rf = rf_model.predict(X_test)
+````
+
+The error was caused by a small number of rows in `data/processed/test_engineered.csv` still containing NaN values in the engineered model features.
+
+It is important to note that **these NaNs were not present in the data used to train or evaluate the model in the Jupyter notebook**.
+The model itself is fully trained on clean data and performs correctly.
+The NaNs originated from *how the engineered test dataset was exported*, not from the modelling pipeline.
+
+**Impact:**
+RandomForestRegressor does not allow predictions with NaN values, so the Model Performance page crashed on Heroku.
+
+**Fix Implemented:**
+To make the app robust and prevent crashes, a defensive cleaning step was added directly inside `show_model_performance_page()` in `app.py`.
+
+Before generating predictions for display, the app now drops any rows containing NaN values in the model features or target column:
+
+```python
+# Load the engineered test data
+test_df = load_test_data()
+
+# Keep only the model features + target, and drop any rows with missing values
+test_subset = test_df[MODEL_FEATURES + ["SalePrice"]].dropna()
+
+X_test = test_subset[MODEL_FEATURES]
+y_test = test_subset["SalePrice"]
+
+# Make predictions with the Random Forest model
+y_pred_rf = rf_model.predict(X_test)
+```
+
+**Result:**
+
+* The Model Performance page now loads correctly on Heroku.
+* All performance metrics and the Actual vs Predicted scatter plot render without errors.
+* The trained model itself remains unaffected — it was trained on clean data, and its performance remains valid.
+* The fix simply prevents incomplete exported rows from causing runtime crashes in the app.
+
+This defensive handling ensures the deployed dashboard is stable and user-friendly, even if the processed test dataset contains a few incomplete rows from earlier export steps.
 
 ## Deployment
 
