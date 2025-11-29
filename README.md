@@ -1,5 +1,7 @@
 ## Introduction
 
+![Mockup](images/mockup-heritagehousing.png)
+
 This project is the final requirement for the Code Institute Diploma in Full Stack Software Development (Predictive Analytics).  
 Its purpose is to support a client who wants to understand what makes a house valuable and to predict the sale prices of four homes they have inherited in Ames, Iowa.
 
@@ -11,7 +13,7 @@ The results are presented in an interactive Streamlit dashboard that allows the 
 - see predicted prices for their inherited properties, and
 - generate real-time predictions for any house configuration.
 
-A link to the deployed dashboard...
+[Heritage Housing Price Predictor](https://p5-heritage-housing-d758851eb371.herokuapp.com/) (Click to view dashboard)
 
 ## Business Requirements
 
@@ -581,18 +583,63 @@ This defensive handling ensures the deployed dashboard is stable and user-friend
 
 ## Deployment
 
-### Heroku
+This project was deployed using **Heroku** to host the Streamlit dashboard.  
+The live deployed application can be accessed here:
 
-* The App live link is: <https://YOUR_APP_NAME.herokuapp.com/>
-* Set the .python-version Python version to a [Heroku-24](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
+[Heritage Housing Price Predictor](https://p5-heritage-housing-d758851eb371.herokuapp.com/)
 
-1. Log in to Heroku and create an App
-2. At the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+### Heroku Configuration
+
+The following files were required for successful deployment:
+
+- **`app.py`** — Main Streamlit application.
+- **`requirements.txt`** — Lists all Python dependencies.
+- **`Procfile`** — Tells Heroku how to run the app:
+- **`setup.sh`** — Creates the necessary Streamlit config on the Heroku dyno.
+- **`runtime.txt`** — Specifies the Python version:
+- **`models/`** — Contains the saved Random Forest model.
+- **`data/processed/`** — Contains the engineered datasets used for the dashboard pages.
+
+### Steps to Deploy:
+
+1. **Prepare the repository**
+ - Ensure all necessary files are committed and pushed to GitHub.
+
+2. **Create the Heroku app**
+ - Log in to https://dashboard.heroku.com/
+ - Click **New → Create new app**
+ - Choose a unique app name (`p5-heritage-housing`)
+ - Select your region (European)
+
+3. **Connect Heroku to GitHub**
+ - Go to the **Deploy** tab of your Heroku app
+ - Under Deployment method, select **GitHub**
+ - Search for your GitHub repository (aishieee) and click **Connect**
+
+4. **Deploy the application**
+ - In the Manual deploy* section, choose the `main` branch
+ - Click **Deploy Branch**
+ - Wait for the build logs to finish with **Build succeeded**
+
+5. **Open the app**
+ - Click **Open App** at the top of the Heroku dashboard
+ - Your Streamlit application will open at  
+   https://p5-heritage-housing-d758851eb371.herokuapp.com/
+
+
+## Running the Application Locally
+
+To run the project on your local device:
+
+Running the application
+The streamlit app/dashboard is delpoyed through heroku, as described step-by-step in the deployment section above.
+
+If you wish to run the the app locally we can run the following command in the terminal:
+
+```
+streamlit run app.py
+```
+This will run a local version of the app on your device.
 
 ## Credits
 
