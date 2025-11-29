@@ -26,6 +26,24 @@ The results are presented in an interactive Streamlit dashboard that allows the 
 
 A link to the deployed dashboard...
 
+## Business Requirements
+
+The client, Lydia Doe, recently inherited four residential properties in Ames, Iowa, from her great-grandfather.  
+Although Lydia is familiar with property valuation in her home country of Belgium, she is unsure whether the same factors that influence property prices there also apply to the Iowan housing market. Because inaccurate pricing could lead to financial loss, she has asked for data-driven support.
+
+Lydia located a publicly available dataset containing historical house prices for Ames, Iowa, and has provided this data for analysis. She requires a solution that can help her:
+
+1. **Understand which house attributes are most strongly correlated with SalePrice.**  
+   Lydia wants to identify what makes a house desirable and valuable in the Ames market.  
+   She expects clear **data visualisations** demonstrating how key variables relate to the sale price, so she can understand which features contribute most to valuation.
+
+2. **Predict the sale price of her four inherited houses, as well as any other house in Ames, Iowa.**  
+   Lydia needs accurate price estimates for her inherited properties in order to maximise their sale value.  
+   Additionally, she wants the ability to generate predictions for any future property she might consider buying or selling in Ames.
+
+To meet these requirements, a ML regression model is developed and integrated into an interactive Streamlit dashboard that presents the insights and predictions in an accessible, user-friendly format.
+
+
 
 ## Dataset Content
 
@@ -59,14 +77,7 @@ A link to the deployed dashboard...
 |YearRemodAdd|Remodel date (same as construction date if no remodelling or additions)|1950 - 2010|
 |SalePrice|Sale Price|34900 - 755000|
 
-## Business Requirements
 
-As a good friend, you are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximising the sales price for the inherited properties.
-
-Although your friend has an excellent understanding of property prices in her own state and residential area, she fears that basing her estimates for property worth on her current knowledge might lead to inaccurate appraisals. What makes a house desirable and valuable where she comes from might not be the same in Ames, Iowa. She found a public dataset with house prices for Ames, Iowa, and will provide you with that.
-
-* 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
-* 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa.
 
 ## Hypothesis
 
