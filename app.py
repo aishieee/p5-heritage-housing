@@ -696,8 +696,9 @@ def show_model_performance_page():
     st.subheader("🌲 Random Forest Regressor (final model)")
 
     test_df = load_test_data()
-    X_test = test_df[MODEL_FEATURES]
-    y_test = test_df["SalePrice"]
+    test_subset = test_df[MODEL_FEATURES + ["SalePrice"]].dropna()
+    X_test = test_subset[MODEL_FEATURES]
+    y_test = test_subset["SalePrice"]
 
     y_pred_rf = rf_model.predict(X_test)
 
