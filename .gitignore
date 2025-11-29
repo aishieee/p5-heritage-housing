@@ -9,8 +9,7 @@ node_modules/
 cloudinary_python.txt
 kaggle.json
 .venv/
-data/
-*.csv
+data/raw/
 *.xlsx
 *.parquet
 .DS_Store
